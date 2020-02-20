@@ -2,7 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const UserController = require("./controllers/UserController")
 const ScoreController = require("./controllers/ScoreController")
-
+const EventController = require("./controllers/EventController")
 
 const app = express()
 const port = process.env.PORT || 8082
@@ -32,6 +32,13 @@ app
   .get(UserController.readUser)
 
 app
+  .route("/events/show")
+  .get(EventController.listAllEvents)
+app
+  .route("/events/show/:eventId")
+  .get(EventController.readEvent)
+
+app
   .route("/score/show")
   .get(ScoreController.listAllUsersScore)
 app
@@ -40,8 +47,6 @@ app
 app
   .route("/score/update/:userId")
   .put(ScoreController.updateUser)
-
-
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`)
