@@ -40,6 +40,13 @@ app
   .get(GameController.readGame)
 
 app
+  .route("/promotions/show")
+  .get(GameController.listAllPromotions)
+app
+  .route("/promotions/show/:promotionId")
+  .get(GameController.readPromotion)
+
+app
   .route("/events/show")
   .get(EventController.listAllEvents)
 app
