@@ -1,7 +1,7 @@
 const mySqlClient = require('../models/dbs')
 
-exports.listAllGames = (req, res) => {
-  const query = `SELECT * FROM jeu`
+exports.listAllPromotions = (req, res) => {
+  const query = `SELECT * FROM promotion`
   const sqlQuery = mySqlClient.query(query, (error, results) => {
     if (error) {
       res.status(500).send(error)
@@ -10,9 +10,9 @@ exports.listAllGames = (req, res) => {
   })
 }
 
-exports.readGame = (req, res) => {
-  const query = `SELECT * FROM jeu WHERE id = ?`
-  const id = req.params.gameId
+exports.readPromotion = (req, res) => {
+  const query = `SELECT * FROM promotion WHERE id = ?`
+  const id = req.params.promotionId
   const sqlQuery = mySqlClient.query(query, [id], (error, results) => {
     console.log(results)
   if (error) {
