@@ -3,6 +3,7 @@ const bodyParser = require("body-parser")
 const UserController = require("./controllers/UserController")
 const ScoreController = require("./controllers/ScoreController")
 const EventController = require("./controllers/EventController")
+const GameController = require("./controllers/GameController")
 
 const app = express()
 const port = process.env.PORT || 8082
@@ -30,6 +31,13 @@ app
 app
   .route("/users/show/:userId")
   .get(UserController.readUser)
+
+app
+  .route("/games/show")
+  .get(GameController.listAllGames)
+app
+  .route("/games/show/:gameId")
+  .get(GameController.readGame)
 
 app
   .route("/events/show")
