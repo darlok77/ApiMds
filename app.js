@@ -4,6 +4,7 @@ const UserController = require("./controllers/UserController")
 const ScoreController = require("./controllers/ScoreController")
 const EventController = require("./controllers/EventController")
 const GameController = require("./controllers/GameController")
+const PromotionsController = require("./controllers/PromotionsController")
 
 const app = express()
 const port = process.env.PORT || 8082
@@ -41,10 +42,10 @@ app
 
 app
   .route("/promotions/show")
-  .get(GameController.listAllPromotions)
+  .get(PromotionsController.listAllPromotions)
 app
   .route("/promotions/show/:promotionId")
-  .get(GameController.readPromotion)
+  .get(PromotionsController.readPromotion)
 
 app
   .route("/events/show")
